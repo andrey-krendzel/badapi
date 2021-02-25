@@ -19,7 +19,7 @@ function Manufacturer(props) {
     }
 
   React.useEffect(() => {
-    fetch("https://frozen-hollows-90227.herokuapp.com/https://bad-api-assignment.reaktor.com/v2/availability/" + props.location.manufacturer)
+    fetch("https://damp-woodland-35964.herokuapp.com/https://bad-api-assignment.reaktor.com/v2/availability/" + props.location.manufacturer)
     .then(handleErrors)
       .then((response) => response.json())
       .then((responseData) => {

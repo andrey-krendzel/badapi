@@ -21,7 +21,7 @@ function App(props) {
 
   // GET method
   React.useEffect(() => {
-    fetch("https://frozen-hollows-90227.herokuapp.com/https://bad-api-assignment.reaktor.com/v2/products/" + category)
+    fetch("https://damp-woodland-35964.herokuapp.com/https://bad-api-assignment.reaktor.com/v2/products/" + category)
       .then(handleErrors)
       .then((response) => response.json())
       .then((responseData) => {
