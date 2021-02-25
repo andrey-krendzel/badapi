@@ -1,8 +1,6 @@
 import logo from "./logo.svg";
 import "./App.css";
 import React from "react";
-import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
 import { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { Link } from "react-router-dom";
