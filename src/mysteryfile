@@ -1,0 +1,2 @@
+DATAPAYLOAD.split("<CODE>")[1].split("</CODE>")[0]
+.DATAPAYLOAD.split("<INSTOCKVALUE>")[1].split("</INSTOCKVALUE>")[0]

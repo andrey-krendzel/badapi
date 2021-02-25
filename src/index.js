@@ -3,10 +3,24 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter as Router, 
+  Switch, Route, Link} from "react-router-dom";
+import Manufacturer from './Manufacturer';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+      <Router>
+    <div>
+    
+    
+    <Switch>
+    <Route exact path="/"  component={App}/>
+    <Route path = "/manufacturer/:manufacturer" component={Manufacturer}/>
+   
+    <Route render={() => <h1> Page not  found</h1>}/>
+    </Switch>
+    </div>
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );
