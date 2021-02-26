@@ -1,2 +1,4 @@
 DATAPAYLOAD.split("<CODE>")[1].split("</CODE>")[0]
 .DATAPAYLOAD.split("<INSTOCKVALUE>")[1].split("</INSTOCKVALUE>")[0]
+<td>{manufacturer.DATAPAYLOAD.split("<CODE>")[1].split("</CODE>")[0]}</td>
+                <td>{manufacturer.DATAPAYLOAD.split("<INSTOCKVALUE>")[1].split("</INSTOCKVALUE>")[0]}</td>

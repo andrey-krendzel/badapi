@@ -32,8 +32,9 @@ function Manufacturer(props) {
   
 
   if (fetched == 1){
-    let codes = manufacturers.map(manufacturer => manufacturer.DATAPAYLOAD.split("<CODE>")[1].split("</CODE>")[0])
-    let availability = manufacturers.map(manufacturer => manufacturer.DATAPAYLOAD.split("<INSTOCKVALUE>")[1].split("</INSTOCKVALUE>")[0])
+      // Testing the split functions
+    let codes = [...manufacturers.map(manufacturer => manufacturer.DATAPAYLOAD.split("<CODE>")[1].split("</CODE>")[0])]
+    let availability = [...manufacturers.map(manufacturer => manufacturer.DATAPAYLOAD.split("<INSTOCKVALUE>")[1].split("</INSTOCKVALUE>")[0])]
     console.log(availability)
   }
 
@@ -41,8 +42,8 @@ function Manufacturer(props) {
 
   return (
     <div>
-      <h1>Manufacturers</h1>
-
+      <h1>Manufacturer:</h1>
+<h2>{props.location.manufacturer}</h2>
       <h2>
         <Link to="/">Go back </Link>
       </h2>
