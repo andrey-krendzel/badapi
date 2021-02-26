@@ -22,14 +22,20 @@ function Products(props){
 
 // GET method
 React.useEffect(() => {
+  
+  if (localStorage.getItem(props.category)){
+    setProducts(localStorage.getItem(props.category))
+  } else{
   fetch("https://damp-woodland-35964.herokuapp.com/https://bad-api-assignment.reaktor.com/v2/products/" + props.category)
     .then(handleErrors)
     .then((response) => response.json())
     .then((responseData) => {
       console.log(responseData);
       setProducts(responseData);
+      localStorage.setItem(props.category, products);
     })
     .catch((error) => console.log(error));
+  }
 }, [update]);
 
 return(
