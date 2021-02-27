@@ -11,6 +11,8 @@ import AppBar from "@material-ui/core/AppBar";
 function Products(props){
   const [products, setProducts] = useState([]);
   const [update, setUpdate] = useState();
+  const [sortedField, setSortedField] = React.useState();
+  const [direction, setDirection] = React.useState();
 
  //Errors for fetch
  function handleErrors(response) {
@@ -22,21 +24,46 @@ function Products(props){
 
 // GET method
 React.useEffect(() => {
-  
-  if (localStorage.getItem(props.category)){
-    setProducts(localStorage.getItem(props.category))
-  } else{
+
   fetch("https://damp-woodland-35964.herokuapp.com/https://bad-api-assignment.reaktor.com/v2/products/" + props.category)
     .then(handleErrors)
     .then((response) => response.json())
     .then((responseData) => {
       console.log(responseData);
       setProducts(responseData);
-      localStorage.setItem(props.category, products);
+      
     })
     .catch((error) => console.log(error));
+  }, [update]);
+
+  //Sort magic
+  //Dont execute the function if sortedField isn't modified
+  if (sortedField != null) {
+    if (direction == "asc") {
+      //Asc
+      products.sort((a, b) => {
+        if (a[sortedField] < b[sortedField]) {
+          return -1;
+        }
+        if (a[sortedField] > b[sortedField]) {
+          return 1;
+        }
+        return 0;
+      });
+    } else {
+      // Desc
+      products.sort((a, b) => {
+        if (a[sortedField] < b[sortedField]) {
+          return 1;
+        }
+        if (a[sortedField] > b[sortedField]) {
+          return -1;
+        }
+        return 0;
+      });
+    }
   }
-}, [update]);
+
 
 return(
   <table>
@@ -48,6 +75,8 @@ return(
         <button
           type="button"
           onClick={() => {
+            setSortedField("color");
+            setDirection("asc");
           }}
         >
           Asc
@@ -55,6 +84,8 @@ return(
         <button
           type="button"
           onClick={() => {
+            setSortedField("color");
+            setDirection("desc");
           }}
         >
           Desc
@@ -66,6 +97,8 @@ return(
         <button
           type="button"
           onClick={() => {
+            setSortedField("manufacturer");
+            setDirection("asc");
           }}
         >
           Asc
@@ -73,6 +106,8 @@ return(
         <button
           type="button"
           onClick={() => {
+            setSortedField("manufacturer");
+            setDirection("desc");
           }}
         >
           Desc
@@ -84,7 +119,8 @@ return(
         <button
           type="button"
           onClick={() => {
-           
+            setSortedField("type");
+            setDirection("asc");
           }}
         >
           Asc
@@ -92,6 +128,8 @@ return(
         <button
           type="button"
           onClick={() => {
+            setSortedField("type");
+            setDirection("desc");
           }}
         >
           Desc
@@ -102,6 +140,8 @@ return(
         <button
           type="button"
           onClick={() => {
+            setSortedField("price");
+            setDirection("asc");
           }}
         >
           Asc
@@ -109,6 +149,8 @@ return(
         <button
           type="button"
           onClick={() => {
+            setSortedField("price");
+            setDirection("desc");
           }}
         >
           Desc
@@ -119,6 +161,8 @@ return(
         <button
           type="button"
           onClick={() => {
+            setSortedField("name");
+            setDirection("asc");
           }}
         >
           Asc
@@ -126,7 +170,8 @@ return(
         <button
           type="button"
           onClick={() => {
-    
+            setSortedField("name");
+            setDirection("desc");
           }}
         >
           Desc
